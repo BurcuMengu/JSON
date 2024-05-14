@@ -15,13 +15,12 @@
         <button type="submit" value="fish" name="choice">🐟</button>
     </form>
     <div id="recipeContainer" class="hidden">
-        <%= if (locals.recipe) {%>
-
+        <% if (locals.recipe) { %>
             <h2 id="recipeTitle">
                 <%= recipe.name %>
             </h2>
-
-            <h3>Ingredients:</h3>
+    
+            <h3>Ingredients:</h3>  
             <ul id="ingredientList">
                 <li>
                     <%= recipe.ingredients.protein.name %>, <%= recipe.ingredients.protein.preparation %>
@@ -29,19 +28,15 @@
                 <li>
                     <%= recipe.ingredients.salsa.name %>
                 </li>
-                <%= recipe.ingredients.toppings.forEach(topping=> { %>
-                    
-                <li>
-                    <%= topping.quality %> of <%= topping.name %>
-                </li>
-                <% }) %>
+                <% recipe.ingredients.toppings.forEach(function(topping) { %>
+                    <li>
+                        <%= topping.quality %> of <%= topping.name %>
+                    </li>
+                <% }); %>
             </ul>
-
-            <%} else {%>
-                <h2>Pick your favourite taco ingredient 👆</h2>
-                <%}%>
-
-
+        <% } else { %>
+            <h2>Pick your favourite taco ingredient 👆</h2>
+        <% } %>
     </div>
     
 </body>
